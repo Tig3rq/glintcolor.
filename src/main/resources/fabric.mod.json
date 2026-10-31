@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "glintcolor",
+  "version": "${version}",
+  "name": "Glint Color",
+  "description": "Zmień kolor glinta (enchant glint) komendą /glint.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": { "client": ["pl.glintcolor.GlintColorClient"] },
+  "mixins": ["glintcolor.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
