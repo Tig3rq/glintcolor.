@@ -16,15 +16,17 @@ public abstract class RenderLayerMixin {
 	@Final
 	protected String name;
 
-	@Inject(method = "startDrawing", at = @At("TAIL"))
+	@Inject(method = "startDrawing", at = @At("TAIL"), require = 0)
 	private void glintcolor$begin(CallbackInfo ci) {
 		if (this.name != null && this.name.contains("glint")) {
 			float[] c = GlintConfig.current();
 			RenderSystem.setShaderColor(c[0], c[1], c[2], 1.0f);
+			// naprawa: na czesci kart graficznych glint z testem glebi "rowne" (514) sie nie rysuje
+			RenderSystem.depthFunc(515);
 		}
 	}
 
-	@Inject(method = "endDrawing", at = @At("HEAD"))
+	@Inject(method = "endDrawing", at = @At("HEAD"), require = 0)
 	private void glintcolor$end(CallbackInfo ci) {
 		if (this.name != null && this.name.contains("glint")) {
 			RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
