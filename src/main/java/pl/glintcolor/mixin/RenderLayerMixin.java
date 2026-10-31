@@ -21,8 +21,6 @@ public abstract class RenderLayerMixin {
 		if (this.name != null && this.name.contains("glint")) {
 			float[] c = GlintConfig.current();
 			RenderSystem.setShaderColor(c[0], c[1], c[2], 1.0f);
-			// naprawa: na czesci kart graficznych glint z testem glebi "rowne" (514) sie nie rysuje
-			RenderSystem.depthFunc(515);
 		}
 	}
 
